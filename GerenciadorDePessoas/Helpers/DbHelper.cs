@@ -1,4 +1,5 @@
 ﻿using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -27,12 +28,26 @@ namespace ToDoListWebForms.Helpers
                     }
                 }
 
+                var pResultado = new OracleParameter("p_Resultado", OracleDbType.RefCursor)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                _cmmd.Parameters.Add(pResultado);
+
+                _cmmd.Parameters.Add("p_CodigoRetorno", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                _cmmd.Parameters.Add("p_Mensagem", OracleDbType.Varchar2, 4000).Direction = ParameterDirection.Output;
+
+
                 base.AbreConexao();
 
-                using (OracleDataReader dr = _cmmd.ExecuteReader(CommandBehavior.CloseConnection))
+                _cmmd.ExecuteNonQuery();
+
+                OracleRefCursor refCursor = (OracleRefCursor)_cmmd.Parameters["p_Resultado"].Value;
+                using (OracleDataReader dr = refCursor.GetDataReader())
                 {
                     dt.Load(dr);
                 }
+
             }
             catch (OracleException ex)
             {

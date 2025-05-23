@@ -23,7 +23,7 @@ namespace ToDoListWebForms.Helpers
         {
             if (_conexao == null)
             {
-                string connString = ConfigurationManager.ConnectionStrings["GerenciamentoDB"].ConnectionString;
+                string connString = ConfigurationManager.ConnectionStrings["OracleConnection"].ConnectionString;
                 _conexao = new OracleConnection(connString);
             }
         }
