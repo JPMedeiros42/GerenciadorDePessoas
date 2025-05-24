@@ -155,7 +155,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="Gerenciador.aspx" />
+    <Content Include="Telas\ControleDePessoas.aspx" />
+    <Content Include="Telas\Gerenciador.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -234,11 +235,18 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Gerenciador.aspx.cs">
+    <Compile Include="Telas\ControleDePessoas.aspx.cs">
+      <DependentUpon>ControleDePessoas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Telas\ControleDePessoas.aspx.designer.cs">
+      <DependentUpon>ControleDePessoas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Gerenciador.aspx.cs">
       <DependentUpon>Gerenciador.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Gerenciador.aspx.designer.cs">
+    <Compile Include="Telas\Gerenciador.aspx.designer.cs">
       <DependentUpon>Gerenciador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -261,6 +269,7 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Models\Pessoa.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

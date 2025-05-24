@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GerenciadorDePessoas
+namespace GerenciadorDePessoas.Telas
 {
 
 
-    public partial class Gerenciador
+    public partial class ControleDePessoas
     {
 
         /// <summary>
@@ -24,13 +24,13 @@ namespace GerenciadorDePessoas
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// filterCargo control.
+        /// filterPessoa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList filterCargo;
+        protected global::System.Web.UI.WebControls.DropDownList filterPessoa;
 
         /// <summary>
         /// btnBuscar control.
@@ -40,24 +40,6 @@ namespace GerenciadorDePessoas
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBuscar;
-
-        /// <summary>
-        /// btnAdicionarPessoa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdicionarPessoa;
-
-        /// <summary>
-        /// btnCalcularSalarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCalcularSalarios;
 
         /// <summary>
         /// lblMensagem control.
@@ -274,5 +256,23 @@ namespace GerenciadorDePessoas
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAdicionar;
+
+        /// <summary>
+        /// btnEditar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEditar;
+
+        /// <summary>
+        /// btnDeletar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDeletar;
     }
 }

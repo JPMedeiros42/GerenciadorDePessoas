@@ -7,6 +7,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Calculadora de Salarios</title>
+    <style>
+        .align-Grid { 
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -47,7 +53,8 @@
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Gerenciador">Gerenciador</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Telas/Gerenciador">Gerenciador</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Telas/ControleDePessoas">Cadastro</a></li>
                     </ul>
                 </div>
             </div>
