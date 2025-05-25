@@ -8,9 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Calculadora de Salarios</title>
     <style>
-        .align-Grid { 
+        .align-Grid {
             text-align: center;
             vertical-align: middle;
+        }
+
+        .mensagemAlerta {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            padding: 10px;
+            border: 1px solid #badbcc;
+            border-radius: 5px;
+            margin-top: 10px;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+
+        .fade-out {
+            opacity: 0;
         }
     </style>
 
@@ -18,7 +33,7 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>

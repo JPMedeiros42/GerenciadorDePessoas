@@ -24,13 +24,22 @@ namespace GerenciadorDePessoas.Telas
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// filterPessoa control.
+        /// cargoFilterPessoa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList filterPessoa;
+        protected global::System.Web.UI.WebControls.DropDownList cargoFilterPessoa;
+
+        /// <summary>
+        /// nomeFilterPessoa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox nomeFilterPessoa;
 
         /// <summary>
         /// btnBuscar control.
@@ -67,6 +76,15 @@ namespace GerenciadorDePessoas.Telas
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPessoas;
+
+        /// <summary>
+        /// modalId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label modalId;
 
         /// <summary>
         /// lblNome control.

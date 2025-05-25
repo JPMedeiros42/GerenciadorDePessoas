@@ -6,12 +6,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 
 namespace ToDoListWebForms.Helpers
 {
     public sealed class DbHelper : BaseDbHelper
     {
-        public DataTable ExecutarProcedureDT(string procedure, Dictionary<string, object> parametros)
+        public DataTable ExecutarProcedureDT(string procedure, Dictionary<string, object> parametros, out string mensagem)
         {
             DataTable dt = new DataTable();
 
@@ -48,6 +49,8 @@ namespace ToDoListWebForms.Helpers
                     dt.Load(dr);
                 }
 
+                mensagem = _cmmd.Parameters["p_Mensagem"].Value?.ToString();
+
             }
             catch (OracleException ex)
             {
@@ -62,7 +65,7 @@ namespace ToDoListWebForms.Helpers
             return dt;
         }
 
-        public void ExecutarProcedure(string procedure, Dictionary<string, object> parametros)
+        public void ExecutarProcedure(string procedure, Dictionary<string, object> parametros, out string mensagem)
         {
             try
             {
@@ -77,9 +80,14 @@ namespace ToDoListWebForms.Helpers
                     }
                 }
 
+                _cmmd.Parameters.Add("p_CodigoRetorno", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                _cmmd.Parameters.Add("p_Mensagem", OracleDbType.Varchar2, 4000).Direction = ParameterDirection.Output;
+
                 base.AbreConexao();
 
                 _cmmd.ExecuteNonQuery();
+
+                mensagem = _cmmd.Parameters["p_Mensagem"].Value?.ToString();
             }
             catch (OracleException ex)
             {

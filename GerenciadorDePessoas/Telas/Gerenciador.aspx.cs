@@ -38,8 +38,13 @@ namespace GerenciadorDePessoas
                     {
                         parametros.Add("p_Filtro", filterCargo.SelectedValue);
                     }
+                    if (!string.IsNullOrEmpty(nomeFilterPessoa.Text.Trim()))
+                    {
+                        parametros.Add("p_NomeFiltro", nomeFilterPessoa.Text.Trim());
+                    }
 
-                    DataTable pessoas = db.ExecutarProcedureDT("stp_PessoasSalario_Sel", parametros);
+                    string mensagem = string.Empty;
+                    DataTable pessoas = db.ExecutarProcedureDT("stp_PessoasSalario_Sel", parametros, out mensagem);
                     gridVencimentos.DataSource = pessoas;
                     gridVencimentos.DataBind();
 
@@ -59,30 +64,16 @@ namespace GerenciadorDePessoas
                 lblMensagem.Visible = true;
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
+            FecharMensagem();
         }
 
         protected void btnCalcular_Click(object sender, EventArgs e)
         {
-            CalcularVencimentos();
-
-            BuscarVencimentos();
-        }
-
-        protected void CalcularVencimentos()
-        {
             try
             {
-                using (var db = new DbHelper())
-                {
-                    var parametros = new Dictionary<string, object>
-                    {
-                        //{"p_CodigoRetorno", null},
-                        //{"p_Mensagem", null}
-                    };
+                CalcularVencimentos();
 
-
-                    db.ExecutarProcedure("stp_PreencherPS_Ins", parametros);
-                }
+                BuscarVencimentos();
             }
             catch (OracleException ex)
             {
@@ -97,6 +88,23 @@ namespace GerenciadorDePessoas
                 lblMensagem.Visible = true;
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
-        }        
+            FecharMensagem();
+        }
+
+        protected void CalcularVencimentos()
+        {
+            using (var db = new DbHelper())
+            {
+                var parametros = new Dictionary<string, object>();
+
+                string mensagem = string.Empty;
+
+                db.ExecutarProcedure("stp_PreencherPS_Ins", parametros, out mensagem);
+            }
+        }
+        private void FecharMensagem()
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "fecharMensagem", "FecharMensagem();", true);
+        }
     }
 }

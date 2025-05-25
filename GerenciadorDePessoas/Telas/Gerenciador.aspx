@@ -15,6 +15,9 @@
                         <asp:ListItem Value="5">Gerente</asp:ListItem>
                     </asp:DropDownList>
                 </div>
+                <div class="col-md-3">
+                    <asp:TextBox ID="nomeFilterPessoa" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
                 <div class="col-md-1">
                     <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary w-100" OnClick="btnBuscar_Click" Text="Buscar" />
                 </div>
@@ -24,9 +27,7 @@
             </div>
 
             <div class="mensagemErro row d-flex justify-content-center">
-                <div class="col" align="center">
-                    <asp:Label ID="lblMensagem" runat="server" CssClass="" Visible="true" />
-                </div>
+                <asp:Label ID="lblMensagem" runat="server" CssClass="" Visible="true" />
             </div>
 
             <div class="table-responsive">
@@ -36,16 +37,30 @@
                         <asp:BoundField DataField="Id" HeaderText="Id" Visible="false" />
                         <asp:BoundField DataField="Nome" HeaderText="Nome" />
                         <asp:BoundField DataField="Cargo" HeaderText="Cargo" />
-                        <asp:BoundField DataField="SalarioBruto" HeaderText="Salário Bruto" 
-                            DataFormatString="R$ {0:N2}" HtmlEncode="false" ItemStyle-HorizontalAlign="Right"/>
-                        <asp:BoundField DataField="Descontos" HeaderText="Descontos" 
-                            DataFormatString="R$ {0:N2}" HtmlEncode="false" ItemStyle-HorizontalAlign="Right"/>
-                        <asp:BoundField DataField="SalarioLiquido" HeaderText="Salário Liquido" 
-                            DataFormatString="R$ {0:N2}" HtmlEncode="false" ItemStyle-HorizontalAlign="Right"/>
+                        <asp:BoundField DataField="SalarioBruto" HeaderText="Salário Bruto"
+                            DataFormatString="R$ {0:N2}" HtmlEncode="false" ItemStyle-HorizontalAlign="Right" />
+                        <asp:BoundField DataField="Descontos" HeaderText="Descontos"
+                            DataFormatString="R$ {0:N2}" HtmlEncode="false" ItemStyle-HorizontalAlign="Right" />
+                        <asp:BoundField DataField="SalarioLiquido" HeaderText="Salário Liquido"
+                            DataFormatString="R$ {0:N2}" HtmlEncode="false" ItemStyle-HorizontalAlign="Right" />
                     </Columns>
                 </asp:GridView>
                 <asp:Label ID="lblPessoas" runat="server" Text="Nenhuma pessoa encontrada" Visible="false" CssClass="text-muted"></asp:Label>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
+
+    <script type="text/javascript">
+        function FecharMensagem() {
+            const alerta = document.getElementById('<%= lblMensagem.ClientID %>');
+            if (alerta && alerta.innerText.trim() !== "") {
+                alerta.style.display = 'block';
+
+                setTimeout(() => {
+                    alerta.style.display = 'none';
+                }, 5000);
+            }
+        }
+    </script>
+
 </asp:Content>

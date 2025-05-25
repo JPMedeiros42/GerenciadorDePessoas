@@ -6,7 +6,7 @@
             <div class="row mb-3">
                 <h2>Lista de Pessoas</h2>
                 <div class="col-md-2">
-                    <asp:DropDownList ID="filterPessoa" runat="server" CssClass="form-select">
+                    <asp:DropDownList ID="cargoFilterPessoa" runat="server" CssClass="form-select">
                         <asp:ListItem Value="">Todos</asp:ListItem>
                         <asp:ListItem Value="1">Estagiario</asp:ListItem>
                         <asp:ListItem Value="2">Tecnico</asp:ListItem>
@@ -15,16 +15,20 @@
                         <asp:ListItem Value="5">Gerente</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-3">
+                    <asp:TextBox ID="nomeFilterPessoa" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+                <div class="col-md-2">
                     <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary w-100" OnClick="btnBuscar_Click" Text="Buscar" />
                 </div>
                 <div class="col-md-2">
-                    <button type="button" id="btnAdicionarPessoa" class="btn btn-success w-100" 
-                        data-bs-target="#modalPessoa" data-bs-toggle="modal" onclick="AbrirModal('Adicionar')">Adicionar Pessoa</button>
+                    <button type="button" id="btnAdicionarPessoa" class="btn btn-success w-100"
+                        data-bs-target="#modalPessoa" data-bs-toggle="modal" onclick="AbrirModal('Adicionar')">
+                        Adicionar Pessoa</button>
                 </div>
             </div>
 
-            <div class="mensagemErro">
+            <div class="mensagemErro row">
                 <asp:Label ID="lblMensagem" runat="server" CssClass="" Visible="false" />
             </div>
 
@@ -35,21 +39,22 @@
                         <asp:BoundField DataField="Id" HeaderText="Id" Visible="false" />
                         <asp:TemplateField HeaderText="Nome" ItemStyle-CssClass="align-Grid">
                             <ItemTemplate>
-
-                                <a href="javascript:void(0);" data-bs-target="#modalPessoa" data-bs-toggle="modal" onclick='<%# "AbrirModal(&#39;Editar&#39;," + Eval("Id") + ");" %>'><%# Eval("Nome") %></a>
-
+                                <asp:LinkButton ID="lnkAbrirModal" runat="server" 
+                                                    Text='<%# Eval("Nome") %>' 
+                                                    CommandArgument='<%# Eval("Id") %>' 
+                                                    OnClick="btnBuscarPorId_Click"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Cargo" HeaderText="Cargo"  ItemStyle-CssClass="align-Grid"/>
-                        <asp:BoundField DataField="Email" HeaderText="E-mail"  ItemStyle-CssClass="align-Grid"/>
-                        <asp:BoundField DataField="Telefone" HeaderText="Telefone"  ItemStyle-CssClass="align-Grid"/>
-                        <asp:BoundField DataField="DataNascimento" HeaderText="Data Nascimento" 
-                            DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" ItemStyle-CssClass="align-Grid"/>
-                        <asp:BoundField DataField="Pais" HeaderText="País"  ItemStyle-CssClass="align-Grid"/>
-                        <asp:BoundField DataField="Cidade" HeaderText="Cidade"  ItemStyle-CssClass="align-Grid"/>
-                        <asp:BoundField DataField="Endereco" HeaderText="Endereço"  ItemStyle-CssClass="align-Grid"/>
-                        <asp:BoundField DataField="CEP" HeaderText="CEP"  ItemStyle-CssClass="align-Grid"/>
-                        <asp:BoundField DataField="Usuario" HeaderText="Usuário"  ItemStyle-CssClass="align-Grid"/>
+                        <asp:BoundField DataField="Cargo" HeaderText="Cargo" ItemStyle-CssClass="align-Grid" />
+                        <asp:BoundField DataField="Email" HeaderText="E-mail" ItemStyle-CssClass="align-Grid" />
+                        <asp:BoundField DataField="Telefone" HeaderText="Telefone" ItemStyle-CssClass="align-Grid" />
+                        <asp:BoundField DataField="DataNascimento" HeaderText="Data Nascimento"
+                            DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" ItemStyle-CssClass="align-Grid" />
+                        <asp:BoundField DataField="Pais" HeaderText="País" ItemStyle-CssClass="align-Grid" />
+                        <asp:BoundField DataField="Cidade" HeaderText="Cidade" ItemStyle-CssClass="align-Grid" />
+                        <asp:BoundField DataField="Endereco" HeaderText="Endereço" ItemStyle-CssClass="align-Grid" />
+                        <asp:BoundField DataField="CEP" HeaderText="CEP" ItemStyle-CssClass="align-Grid" />
+                        <asp:BoundField DataField="Usuario" HeaderText="Usuário" ItemStyle-CssClass="align-Grid" />
 
                     </Columns>
                 </asp:GridView>
@@ -68,6 +73,7 @@
 
                         <div class="modal-body">
                             <div class="container">
+                                <asp:Label ID="modalId" runat="server" CssClass="" Visible="false" />
                                 <div class="row mb-3">
                                     <div class="col-md-4">
                                         <asp:Label ID="lblNome" runat="server" Text="Nome Completo"></asp:Label>
@@ -89,7 +95,7 @@
                                         <asp:Label ID="lblPais" runat="server" Text="Pais"></asp:Label>
                                         <asp:DropDownList ID="ddlPais" runat="server" CssClass="form-select">
                                             <asp:ListItem Value=""></asp:ListItem>
-                                            <asp:ListItem Value="Brasil">Brasil</asp:ListItem>
+                                            <asp:ListItem Value="Brazil">Brazil</asp:ListItem>
                                             <asp:ListItem Value="2">Estados Unidos</asp:ListItem>
                                             <asp:ListItem Value="3">Argentina</asp:ListItem>
                                             <asp:ListItem Value="4">Australia</asp:ListItem>
@@ -106,7 +112,7 @@
                                         <asp:DropDownList ID="ddlCidade" runat="server" CssClass="form-select">
                                             <asp:ListItem Value=""></asp:ListItem>
                                             <asp:ListItem Value="Rio Grande do Norte">Rio Grande do Norte</asp:ListItem>
-                                            <asp:ListItem Value="2">Estados Unidos</asp:ListItem>
+                                            <asp:ListItem Value="Distrito Federal">Distrito Federal</asp:ListItem>
                                             <asp:ListItem Value="3">Argentina</asp:ListItem>
                                             <asp:ListItem Value="4">Australia</asp:ListItem>
                                             <asp:ListItem Value="5">Colombia</asp:ListItem>
@@ -146,8 +152,8 @@
                         </div>
 
                         <div class="modal-footer">
-                            <asp:Button ID="btnAdicionar" runat="server" Text="Adicionar" CssClass="btn btn-primary" />
-                            <asp:Button ID="btnEditar" runat="server" Text="Editar" CssClass="btn btn-success" />
+                            <asp:Button ID="btnAdicionar" runat="server" Text="Adicionar" CssClass="btn btn-primary" OnClick="btnAdicionar_Click"/>
+                            <asp:Button ID="btnEditar" runat="server" Text="Editar" CssClass="btn btn-success" OnClick="btnEditar_Click"/>
                             <button type="button" id="btnModalDelete" class="btn btn-danger" data-bs-target="#modalDeletar" data-bs-toggle="modal">Deletar</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         </div>
@@ -172,7 +178,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <asp:Button ID="btnDeletar" runat="server" Text="Deletar" CssClass="btn btn-danger" />
+                            <asp:Button ID="btnDeletar" runat="server" Text="Deletar" CssClass="btn btn-danger" OnClick="btnDeletar_Click" />
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
@@ -184,7 +190,10 @@
     <script type="text/javascript">
         function AbrirModal(acao, id) {
 
+            $('#modalPessoa').modal('show');
+
             if (acao === 'Adicionar') {
+                LimparModal();
                 $('#<%= btnAdicionar.ClientID %>').show();
                 $('#<%= btnEditar.ClientID %>').hide();
                 $('#btnModalDelete').hide();
@@ -193,20 +202,39 @@
                 $('#<%= btnAdicionar.ClientID %>').hide();
                 $('#<%= btnEditar.ClientID %>').show();
                 $('#btnModalDelete').show();
+
             }
 
             return false; //evitar postback
         }
-        function LimparModal() {
-            const meuModal = document.getElementById('modalAdicionar');
-            meuModal.querySelectorAll('input[type="text"], textarea').forEach(input => { input.value = '' });
-            meuModal.querySelectorAll('select').forEach(function (dropdown) {
-                dropdown.value = "";
-            });
+        function FecharModal() {
+            LimparModal();
 
             document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
             document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
             document.body.style.paddingRight = '';
         }
+
+        function LimparModal() {
+            const meuModal = document.getElementById('modalPessoa');
+            meuModal.querySelectorAll('input[type="text"], textarea').forEach(input => { input.value = '' });
+            meuModal.querySelectorAll('select').forEach(function (dropdown) {
+                dropdown.value = "";
+            });        
+            
+        }
+
+        function FecharMensagem() {
+            const alerta = document.getElementById('<%= lblMensagem.ClientID %>');
+            if (alerta && alerta.innerText.trim() !== "") {
+                alerta.style.display = 'block';
+
+                setTimeout(() => {
+                    alerta.style.display = 'none';
+                }, 5000); 
+            }
+        }
+
     </script>
 </asp:Content>
