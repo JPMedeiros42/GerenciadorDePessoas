@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Gerenciador" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Gerenciador.aspx.cs" Inherits="GerenciadorDePessoas.Gerenciador" %>
+﻿<%@ Page Title="Listagem de Pessoas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Gerenciador.aspx.cs" Inherits="GerenciadorDePessoas.Gerenciador" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
