@@ -54,11 +54,8 @@ Este projeto é um sistema web em ASP.NET Web Forms (.NET Framework 4.8) para ge
 
 - Será necessário criar as tabelas e as procedures para utilização.
 - Elas estão presentes em:
-├── scripts/
-│   ├── tabelas/
-│   │   └── pessoa.sql
-│   └── procedures/
-│       └── stp_Pessoas_Upd.sql
+-- scripts/tabelas/
+-- scripts/procedures/
 
 ## Como Executar
 
