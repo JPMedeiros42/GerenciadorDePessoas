@@ -39,10 +39,10 @@
                         <asp:BoundField DataField="Id" HeaderText="Id" Visible="false" />
                         <asp:TemplateField HeaderText="Nome" ItemStyle-CssClass="align-Grid">
                             <ItemTemplate>
-                                <asp:LinkButton ID="lnkAbrirModal" runat="server" 
-                                                    Text='<%# Eval("Nome") %>' 
-                                                    CommandArgument='<%# Eval("Id") %>' 
-                                                    OnClick="btnBuscarPorId_Click"/>
+                                <asp:LinkButton ID="lnkAbrirModal" runat="server"
+                                    Text='<%# Eval("Nome") %>'
+                                    CommandArgument='<%# Eval("Id") %>'
+                                    OnClick="btnBuscarPorId_Click" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="Cargo" HeaderText="Cargo" ItemStyle-CssClass="align-Grid" />
@@ -78,15 +78,40 @@
                                     <div class="col-md-4">
                                         <asp:Label ID="lblNome" runat="server" Text="Nome Completo"></asp:Label>
                                         <asp:TextBox ID="txtNome" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="rfvNome" runat="server"
+                                            ControlToValidate="txtNome"
+                                            ValidationGroup="Cadastro"
+                                            ErrorMessage="* Nome obrigatório"
+                                            Display="Dynamic"
+                                            CssClass="text-danger" />
                                     </div>
                                     <div class="col-md-4">
                                         <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>
                                         <asp:TextBox ID="txtEmail" placeholder="exemplo@gmail.com"
                                             runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
+                                            ControlToValidate="txtEmail"
+                                            ValidationGroup="Cadastro"
+                                            ErrorMessage="* Email é obrigatório"
+                                            Display="Dynamic"
+                                            CssClass="text-danger" />
+                                        <asp:RegularExpressionValidator ID="revEmail" runat="server"
+                                            ControlToValidate="txtEmail"
+                                            ValidationGroup="Cadastro"
+                                            ValidationExpression="^[\w\.-]+@[\w\.-]+\.\w{2,}$"
+                                            ErrorMessage="* Email inválido"
+                                            Display="Dynamic"
+                                            CssClass="text-danger" />
                                     </div>
                                     <div class="col-md-4">
                                         <asp:Label ID="lblUsuario" runat="server" Text="Nome de Usuario"></asp:Label>
                                         <asp:TextBox ID="txtUsuario" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="rfvUsuario" runat="server"
+                                            ControlToValidate="txtUsuario"
+                                            ValidationGroup="Cadastro"
+                                            ErrorMessage="* Usuário é obrigatório"
+                                            Display="Dynamic"
+                                            CssClass="text-danger" />
                                     </div>
                                 </div>
 
@@ -101,11 +126,26 @@
                                             <asp:ListItem Value="4">Australia</asp:ListItem>
                                             <asp:ListItem Value="5">Colombia</asp:ListItem>
                                         </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="rfvPais" runat="server"
+                                            ControlToValidate="ddlPais"
+                                            ValidationGroup="Cadastro"
+                                            InitialValue=""
+                                            ErrorMessage="* País é obrigatório"
+                                            Display="Dynamic"
+                                            CssClass="text-danger" />
                                     </div>
                                     <div class="col-md-3">
                                         <asp:Label ID="lblCep" runat="server" Text="CEP"></asp:Label>
-                                        <asp:TextBox ID="txtCep" placeholder="12345678"
+                                        <asp:TextBox ID="txtCep" placeholder="12345-678"
                                             runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:RegularExpressionValidator ID="revTelefone" runat="server"
+                                            ControlToValidate="txtCep"
+                                            ValidationGroup="Cadastro"
+                                            ValidationExpression="^\d{5}-\d{3}$"
+                                            ErrorMessage="* CEP inválido"
+                                            Display="Dynamic"
+                                            CssClass="text-danger" />
+
                                     </div>
                                     <div class="col-md-6">
                                         <asp:Label ID="Cidade" runat="server" Text="Cidade"></asp:Label>
@@ -113,10 +153,18 @@
                                             <asp:ListItem Value=""></asp:ListItem>
                                             <asp:ListItem Value="Rio Grande do Norte">Rio Grande do Norte</asp:ListItem>
                                             <asp:ListItem Value="Distrito Federal">Distrito Federal</asp:ListItem>
-                                            <asp:ListItem Value="3">Argentina</asp:ListItem>
-                                            <asp:ListItem Value="4">Australia</asp:ListItem>
-                                            <asp:ListItem Value="5">Colombia</asp:ListItem>
+                                            <asp:ListItem Value="São Paulo">São Paulo</asp:ListItem>
+                                            <asp:ListItem Value="Minas Gerais">Minas Gerais</asp:ListItem>
+                                            <asp:ListItem Value="Rio de Janeiro">Rio de Janeiro</asp:ListItem>
+                                            <asp:ListItem Value="Bahia">Bahia</asp:ListItem>
                                         </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="rfvCidade" runat="server"
+                                            ControlToValidate="ddlCidade"
+                                            ValidationGroup="Cadastro"
+                                            InitialValue=""
+                                            ErrorMessage="* Cidade é obrigatória"
+                                            Display="Dynamic"
+                                            CssClass="text-danger" />
                                     </div>
                                 </div>
 
@@ -128,10 +176,30 @@
                                     <div class="col-md-4">
                                         <asp:Label ID="lblTelefone" runat="server" Text="Telefone"></asp:Label>
                                         <asp:TextBox ID="txtTelefone" placeholder="(99) 99999-9999" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="rfvTelefone" runat="server"
+                                            ControlToValidate="txtTelefone"
+                                            ValidationGroup="Cadastro"
+                                            ErrorMessage="* Telefone é obrigatório"
+                                            Display="Dynamic"
+                                            CssClass="text-danger" />
+                                        <br />
                                     </div>
                                     <div class="col-md-3">
                                         <asp:Label ID="lblDataNasc" runat="server" Text="Data Nascimento"></asp:Label>
                                         <asp:TextBox ID="txtDataNasc" placeholder="01/01/1999" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="rfvDataNascimento" runat="server"
+                                            ControlToValidate="txtDataNasc"
+                                            ValidationGroup="Cadastro"
+                                            ErrorMessage="* Data de nascimento é obrigatória"
+                                            Display="Dynamic"
+                                            CssClass="text-danger" />
+                                        <asp:RegularExpressionValidator ID="revDataNascimento" runat="server"
+                                            ControlToValidate="txtDataNasc"
+                                            ValidationGroup="Cadastro"
+                                            ValidationExpression="^\d{2}/\d{2}/\d{4}$"
+                                            ErrorMessage="* Formato inválido (use dd/mm/aaaa)"
+                                            Display="Dynamic"
+                                            CssClass="text-danger" />
                                     </div>
                                 </div>
                                 <div class="row">
@@ -145,6 +213,14 @@
                                             <asp:ListItem Value="4">Coordenador</asp:ListItem>
                                             <asp:ListItem Value="5">Gerente</asp:ListItem>
                                         </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="rfvCargo" runat="server"
+                                            ControlToValidate="ddlCargo"
+                                            ValidationGroup="Cadastro"
+                                            InitialValue=""
+                                            ErrorMessage="* Cargo é obrigatório"
+                                            Display="Dynamic"
+                                            CssClass="text-danger" />
+                                        <br />
                                     </div>
                                 </div>
 
@@ -152,8 +228,8 @@
                         </div>
 
                         <div class="modal-footer">
-                            <asp:Button ID="btnAdicionar" runat="server" Text="Adicionar" CssClass="btn btn-primary" OnClick="btnAdicionar_Click"/>
-                            <asp:Button ID="btnEditar" runat="server" Text="Editar" CssClass="btn btn-success" OnClick="btnEditar_Click"/>
+                            <asp:Button ID="btnAdicionar" runat="server" Text="Adicionar" CssClass="btn btn-primary" ValidationGroup="Cadastro" OnClick="btnAdicionar_Click" />
+                            <asp:Button ID="btnEditar" runat="server" Text="Editar" CssClass="btn btn-success" OnClick="btnEditar_Click" />
                             <button type="button" id="btnModalDelete" class="btn btn-danger" data-bs-target="#modalDeletar" data-bs-toggle="modal">Deletar</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         </div>
@@ -221,8 +297,8 @@
             meuModal.querySelectorAll('input[type="text"], textarea').forEach(input => { input.value = '' });
             meuModal.querySelectorAll('select').forEach(function (dropdown) {
                 dropdown.value = "";
-            });        
-            
+            });
+
         }
 
         function FecharMensagem() {
@@ -232,7 +308,7 @@
 
                 setTimeout(() => {
                     alerta.style.display = 'none';
-                }, 5000); 
+                }, 5000);
             }
         }
 

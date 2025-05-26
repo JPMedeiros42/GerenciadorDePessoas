@@ -105,6 +105,15 @@ namespace GerenciadorDePessoas.Telas
         protected global::System.Web.UI.WebControls.TextBox txtNome;
 
         /// <summary>
+        /// rfvNome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNome;
+
+        /// <summary>
         /// lblEmail control.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,24 @@ namespace GerenciadorDePessoas.Telas
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
+
+        /// <summary>
+        /// rfvEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmail;
+
+        /// <summary>
+        /// revEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revEmail;
 
         /// <summary>
         /// lblUsuario control.
@@ -141,6 +168,15 @@ namespace GerenciadorDePessoas.Telas
         protected global::System.Web.UI.WebControls.TextBox txtUsuario;
 
         /// <summary>
+        /// rfvUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUsuario;
+
+        /// <summary>
         /// lblPais control.
         /// </summary>
         /// <remarks>
@@ -157,6 +193,15 @@ namespace GerenciadorDePessoas.Telas
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPais;
+
+        /// <summary>
+        /// rfvPais control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPais;
 
         /// <summary>
         /// lblCep control.
@@ -177,6 +222,15 @@ namespace GerenciadorDePessoas.Telas
         protected global::System.Web.UI.WebControls.TextBox txtCep;
 
         /// <summary>
+        /// revTelefone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTelefone;
+
+        /// <summary>
         /// Cidade control.
         /// </summary>
         /// <remarks>
@@ -193,6 +247,15 @@ namespace GerenciadorDePessoas.Telas
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCidade;
+
+        /// <summary>
+        /// rfvCidade control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCidade;
 
         /// <summary>
         /// lblEndereco control.
@@ -231,6 +294,15 @@ namespace GerenciadorDePessoas.Telas
         protected global::System.Web.UI.WebControls.TextBox txtTelefone;
 
         /// <summary>
+        /// rfvTelefone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTelefone;
+
+        /// <summary>
         /// lblDataNasc control.
         /// </summary>
         /// <remarks>
@@ -249,6 +321,24 @@ namespace GerenciadorDePessoas.Telas
         protected global::System.Web.UI.WebControls.TextBox txtDataNasc;
 
         /// <summary>
+        /// rfvDataNascimento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDataNascimento;
+
+        /// <summary>
+        /// revDataNascimento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revDataNascimento;
+
+        /// <summary>
         /// lblCargo control.
         /// </summary>
         /// <remarks>
@@ -265,6 +355,15 @@ namespace GerenciadorDePessoas.Telas
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCargo;
+
+        /// <summary>
+        /// rfvCargo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCargo;
 
         /// <summary>
         /// btnAdicionar control.

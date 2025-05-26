@@ -1,12 +1,8 @@
-﻿using GerenciadorDePessoas.Telas;
-using Oracle.ManagedDataAccess.Client;
+﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using ToDoListWebForms.Helpers;
 
 namespace GerenciadorDePessoas
@@ -47,6 +43,17 @@ namespace GerenciadorDePessoas
                     DataTable pessoas = db.ExecutarProcedureDT("stp_PessoasSalario_Sel", parametros, out mensagem);
                     gridVencimentos.DataSource = pessoas;
                     gridVencimentos.DataBind();
+
+                    if (!string.IsNullOrEmpty(mensagem))
+                    {
+                        if (IsPostBack)
+                        {
+                            lblMensagem.Text = mensagem;
+                            lblMensagem.CssClass = "alert alert-success"; // ou danger se for erro
+                            lblMensagem.Visible = true;
+                        }
+
+                    }
 
                     lblPessoas.Visible = (pessoas == null || pessoas.Rows.Count == 0);
                 }
@@ -100,6 +107,14 @@ namespace GerenciadorDePessoas
                 string mensagem = string.Empty;
 
                 db.ExecutarProcedure("stp_PreencherPS_Ins", parametros, out mensagem);
+
+                if (!string.IsNullOrEmpty(mensagem))
+                {
+                    lblMensagem.Text = mensagem;
+                    lblMensagem.CssClass = "alert alert-success"; // ou danger se for erro
+                    lblMensagem.Visible = true;
+
+                }
             }
         }
         private void FecharMensagem()
