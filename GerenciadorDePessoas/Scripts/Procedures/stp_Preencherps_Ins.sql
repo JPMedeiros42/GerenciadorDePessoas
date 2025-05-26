@@ -12,6 +12,8 @@ set define off;
 AS
 BEGIN  
     
+    DELETE FROM tmp_PessoaSalario;
+    
     INSERT INTO tmp_PessoaSalario(Pessoa_Id,Nome,Salario_Bruto,Descontos)
     SELECT
         p.Id,
